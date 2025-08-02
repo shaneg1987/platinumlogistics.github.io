@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Platinum Global Logistics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #0f1117;
+      color: #e0e6f0;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #0af5ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #12151b;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a.active {
+      color: #fff;
+      border-bottom: 2px solid #0af5ff;
+      padding-bottom: 4px;
+    }
+    main {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      color: #ccc;
+    }
+    h2 {
+      color: #0af5ff;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    form {
+      background: #181c27;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(10, 245, 255, 0.3);
+    }
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #0af5ff;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #0f1117;
+      color: #e0e6f0;
+      resize: vertical;
+      box-shadow: inset 0 0 5px rgba(10, 245, 255, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #0af5ff;
+      background: #12151b;
+    }
+    button {
+      background: #0af5ff;
+      color: #0f1117;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #08c4d6;
+    }
+    .contact-info {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #8ab8ff;
+    }
+    .contact-info p {
+      margin: 0.5rem 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #12151b;
+      color: #555f7a;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+    @media (max-width: 480px) {
+      main {
+        margin: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Platinum Global Logistics</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="fulfilment.html">E-Commerce Fulfilment</a>
+      <a href="warehousing.html">Warehousing</a>
+      <a href="logistics.html">Worldwide Logistics</a>
+      <a href="customer-service.html">Customer Service</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 data-aos="fade-down">Get in Touch</h2>
+
+    <form data-aos="fade-up" data-aos-delay="150" action="mailto:info@platinumgloballogistics.com" method="post" enctype="text/plain" novalidate>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" name="subject" placeholder="Subject of your message" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-info" data-aos="fade-up" data-aos-delay="300">
+      <p><strong>Address:</strong> 123 Logistics Avenue, Oranmore, Galway, Ireland</p>
+      <p><strong>Phone:</strong> +353 91 123 4567</p>
+      <p><strong>Email:</strong> <a href="mailto:info@platinumgloballogistics.com">info@platinumgloballogistics.com</a></p>
+      <p><strong>Working Hours:</strong> Mon – Fri: 9am – 6pm</p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Platinum Global Logistics. All rights reserved.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      easing: 'ease-in-out',
+    });
+  </script>
+</body>
+</html>

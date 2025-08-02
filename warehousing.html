@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warehousing | Platinum Global Logistics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <style>
+    /* Same styling as index.html */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      margin: 0;
+      background: #0f1117;
+      color: #e0e6f0;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #0af5ff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #12151b;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    nav a {
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a.active {
+      color: #fff;
+      border-bottom: 2px solid #0af5ff;
+      padding-bottom: 4px;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      color: #0af5ff;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .content {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .content img {
+      max-width: 480px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(10, 245, 255, 0.3);
+      flex: 1 1 300px;
+    }
+    .text {
+      flex: 1 1 400px;
+      color: #ccc;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .section {
+      margin-top: 3rem;
+      background: #12151b;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(10, 245, 255, 0.2);
+      color: #ccc;
+    }
+    .section h3 {
+      color: #0af5ff;
+      font-weight: 700;
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: #12151b;
+      color: #555f7a;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      .content img, .text {
+        max-width: 100%;
+      }
+      nav a {
+        margin-left: 1rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Platinum Global Logistics</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="fulfilment.html">E-Commerce Fulfilment</a>
+      <a href="warehousing.html" class="active">Warehousing</a>
+      <a href="logistics.html">Worldwide Logistics</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 data-aos="fade-down">Warehousing Solutions</h2>
+
+    <div class="content">
+      <img src="https://images.unsplash.com/photo-1581091870625-5f90021a68c6?auto=format&fit=crop&w=640&q=80" alt="Warehouse Interior" data-aos="fade-right" />
+      
+      <div class="text" data-aos="fade-left" data-aos-delay="200">
+        <p>Our warehousing solutions provide safe, secure, and flexible storage options tailored to your product requirements.</p>
+        <p>With advanced inventory management systems and real-time visibility, you can track your stock and streamline operations effortlessly.</p>
+        <p>We specialize in handling pharmaceuticals, cosmetics, and sensitive goods with compliance and care.</p>
+      </div>
+    </div>
+
+    <section class="section" data-aos="fade-up" data-aos-delay="300">
+      <h3>Specialised Outsourced Warehousing & 3PL Services</h3>
+      <p>We offer fully managed outsourced warehousing services designed to integrate seamlessly with your business operations. Our 3PL solutions include:</p>
+      <ul>
+        <li>Customised storage and inventory management tailored to your product specifications.</li>
+        <li>Pick, pack, and shipping services with scalable workforce and technology support.</li>
+        <li>Temperature-controlled environments and compliance with regulatory standards.</li>
+        <li>Real-time data integration with your systems for complete visibility and control.</li>
+        <li>Returns processing and reverse logistics management to optimize your supply chain.</li>
+      </ul>
+      <p>Partner with us to reduce overhead, increase efficiency, and enhance customer satisfaction through expert logistics management.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Platinum Global Logistics. All rights reserved.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      easing: 'ease-in-out',
+    });
+  </script>
+</body>
+</html>
