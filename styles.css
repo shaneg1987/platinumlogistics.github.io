@@ -1,0 +1,45 @@
+/* --- Global theme variables --- */
+:root{
+  --bg: #0b0b0b;          /* page background */
+  --text: #eaeaea;        /* body text */
+  --muted: #b8b8b8;       /* secondary text */
+  --brand: #8b5cf6;       /* links, buttons, highlights */
+  --brand-contrast: #ffffff;
+  --card: #151515;        /* panels/sections */
+  --border: #262626;
+}
+
+/* --- Base --- */
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.55;
+}
+
+/* Links */
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Generic sections/cards (adjust selectors to your markup) */
+section, .card, .panel, .container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Buttons */
+button, .btn, input[type="submit"] {
+  background: var(--brand);
+  color: var(--brand-contrast);
+  border: none;
+  border-radius: 10px;
+  padding: .65rem 1rem;
+  cursor: pointer;
+}
+button:hover, .btn:hover, input[type="submit"]:hover { opacity: .92; }
+
+/* Muted text helper */
+.muted { color: var(--muted); }
