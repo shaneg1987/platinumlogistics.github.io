@@ -1,7 +1,7 @@
 /* --- Global theme variables --- */
 :root{
   --bg: #1F2222;          /* page background */
-  --text: #eaeaea;        /* body text */
+  --text: #FDFDFD;        /* body text */
   --muted: #b8b8b8;       /* secondary text */
   --brand: #EE063F;       /* links, buttons, highlights */
   --brand-contrast: #ffffff;
