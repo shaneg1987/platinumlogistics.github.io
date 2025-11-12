@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Platinum Global Logistics</title>
   <meta name="description" content="Fulfilment, warehousing, and cross‑border delivery for growing brands across US, UK & EU." />
-  <link rel="icon" href="Platinum Global Logistics Icon (White).png" />
+  <link rel="icon" href="logo.png" />
   <link rel="apple-touch-icon" href="logo.png" />
   <link rel="canonical" href="https://platinumlogistics.github.io/" />
-  <meta name="theme-color" content="#0b1220" />
+  <!-- Brand Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css" />
+  <meta name="theme-color" content="#1F2322" />
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://platinumlogistics.github.io/" />
@@ -34,13 +37,13 @@
   <style>
     /* ===== Modern, node‑free styling (no frameworks) ===== */
     :root{
-      --bg:#1F2322;            /* deep navy for hero */
-      --panel:#FF0340;         /* slate panel */
-      --ink:#0b0f19;           /* body text on light */
-      --text:#0f172a;          /* headings on light */
-      --brand:#2b6cf6;         /* primary blue */
-      --brand-2:#00d4ff;       /* cyan accent */
-      --accent:#ffd60a;        /* gold accent */
+      --bg:#1F2322;            /* brand charcoal (background accents) */
+      --panel:#262a29;         /* slightly lighter charcoal panel */
+      --ink:#1F2322;           /* body text */
+      --text:#1F2322;          /* headings */
+      --brand:#FF0340;         /* primary brand red */
+      --brand-2:#ff5c84;       /* soft red/pink accent derived */
+      --accent:#FF0340;        /* use brand red as accent */
       --light:#ffffff;         /* white */
       --muted:#6b7280;         /* gray text */
       --border:#e5e7eb;        /* gray border */
@@ -51,7 +54,7 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+    body{margin:0;font:16px/1.6 Pretendard, Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;color:var(--ink);background:#f8fafc}
     a{color:inherit}
     .container{max-width:var(--container);margin:auto;padding:0 20px}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;border:1px solid transparent;background:var(--brand);color:#fff;font-weight:600;text-decoration:none;box-shadow:var(--shadow)}
@@ -72,12 +75,12 @@
     .logo{width:40px;height:40px;border-radius:12px;object-fit:contain;background:#111}
 
     /* ===== Hero ===== */
-    .hero{background:radial-gradient(1200px 600px at 20% -10%, rgba(0,212,255,.15), transparent),
-                      radial-gradient(900px 600px at 110% 10%, rgba(43,108,246,.18), transparent),
-                      linear-gradient(180deg, #0b1220 0%, #0b1220 40%, #0f172a 100%);
+    .hero{background:radial-gradient(1000px 500px at 20% -10%, rgba(255,3,64,.18), transparent),
+                      radial-gradient(900px 600px at 110% 10%, rgba(255,92,132,.18), transparent),
+                      linear-gradient(180deg, #1F2322 0%, #1F2322 40%, #262a29 100%);
           color:#e2e8f0}
     .hero .container{padding:80px 20px}
-    .hero h1{margin:0 0 10px;font-size:44px;line-height:1.1;color:#fff}
+    .hero h1{margin:0 0 10px;font-size:44px;line-height:1.1;color:#fff;font-family:'Syne', system-ui, sans-serif}
     .hero p{margin:0 0 22px;color:#cbd5e1}
     .stat{padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06)}
     .stat .k{font-weight:800;font-size:22px;color:#fff}
@@ -85,12 +88,18 @@
     .hero-panel{padding:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px}
 
     /* ===== Sections ===== */
-    section{padding:70px 0}
-    h2{font-size:32px;line-height:1.2;margin:0 0 10px;color:var(--text)}
+    section{padding:70px 0; scroll-margin-top:80px}
+    h2{font-size:32px;line-height:1.2;margin:0 0 10px;color:var(--text);font-family:'Syne', system-ui, sans-serif}
     .lead{color:var(--muted);margin:0 0 26px}
     .service{padding:18px}
     .service .icon{font-size:20px}
     .list{padding-left:18px}
+    /* Fix UL styled as card in Technology section */
+    ul.card{list-style:none;padding:18px;margin:0}
+    ul.card li{margin:6px 0}
+    /* Chip grid responsive */
+    .chip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;font-size:12px}
+    @media (max-width:960px){.chip-grid{grid-template-columns:repeat(2,1fr)}}
 
     /* ===== Timeline ===== */
     .timeline{display:grid;gap:12px}
@@ -116,7 +125,7 @@
   <header class="header">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px">
       <a class="brand" href="#">
-        <img class="logo" src="Platinum Global Logistics Logo 1 (White).png" alt="Platinum Global Logistics logo" onerror="this.style.background='#111'"/>
+        <img class="logo" src="logo.png" alt="Platinum Global Logistics logo" onerror="this.style.background='#111'"/>
         <span>Platinum Global Logistics</span>
       </a>
       <nav class="nav">
@@ -143,7 +152,7 @@
     <div class="container">
       <div class="grid grid-2" style="align-items:center">
         <div>
-          <div class="chip" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#e2e8f0">Trusted EU/UK/US fulfilment</div>
+          <div class="chip" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#e2e8f0">GLOBAL REACH • LOCAL EXPERTISE</div>
           <h1>Logistics that scale with your brand</h1>
           <p>Fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 26px">
@@ -248,7 +257,7 @@
         <div class="card" style="padding:18px">
           <div class="lead" style="margin-bottom:10px">Sample dashboard</div>
           <div style="height:220px;border-radius:14px;background:linear-gradient(135deg,#e2e8f0,#f8fafc)"></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;font-size:12px">
+          <div class="chip-grid">
             <div class="chip">FedEx ↗</div>
             <div class="chip">UPS ↗</div>
             <div class="chip">DPD ↗</div>
@@ -336,4 +345,3 @@
   </script>
 </body>
 </html>
-
