@@ -2,105 +2,312 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Platinum Global Logistics</title>
-  <link rel="icon" href="Platinum Global Logistics Icon (White).png" />
+  <meta name="description" content="Fulfilment, warehousing, and cross‑border delivery for growing brands across US, UK & EU." />
+  <link rel="icon" href="logo.png" />
   <style>
-    :root {
-      --primary-color: #1F2322;
-      --secondary-color: #FF0340;
-      --accent-color: #ffd60a;
-      --text-color: #111;
-      --bg-color: #fff;
-      --light-bg: #f4f7fb;
+    /* ===== Modern, node‑free styling (no frameworks) ===== */
+    :root{
+      --bg:#0b1220;            /* deep navy for hero */
+      --panel:#0f172a;         /* slate panel */
+      --ink:#0b0f19;           /* body text on light */
+      --text:#0f172a;          /* headings on light */
+      --brand:#2b6cf6;         /* primary blue */
+      --brand-2:#00d4ff;       /* cyan accent */
+      --accent:#ffd60a;        /* gold accent */
+      --light:#ffffff;         /* white */
+      --muted:#6b7280;         /* gray text */
+      --border:#e5e7eb;        /* gray border */
+      --card:#ffffff;
+      --shadow:0 10px 30px rgba(2,6,23,.12);
+      --radius:18px;
+      --container:1200px;
     }
-    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg-color); color: var(--text-color); }
-    header, section, footer { padding: 2rem; max-width: 1000px; margin: auto; }
-    header { background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    header img { height: 50px; }
-    nav a { margin: 0 1rem; text-decoration: none; color: white; font-weight: bold; }
-    nav a:hover { color: var(--accent-color); }
-    h1, h2 { color: var(--primary-color); }
-    section:nth-child(even) { background: var(--light-bg); }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; margin: 1rem 0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-    form input, form textarea { width: 100%; padding: 0.5rem; margin: 0.25rem 0; border-radius: 6px; border: 1px solid #ccc; }
-    form button { background: var(--secondary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
-    form button:hover { background: var(--primary-color); }
-    footer { background: var(--primary-color); color: white; text-align: center; font-size: 0.9rem; padding: 1.5rem; margin-top: 2rem; }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:#f8fafc}
+    a{color:inherit}
+    .container{max-width:var(--container);margin:auto;padding:0 20px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;border:1px solid transparent;background:var(--brand);color:#fff;font-weight:600;text-decoration:none;box-shadow:var(--shadow)}
+    .btn:hover{filter:brightness(.95)}
+    .btn.outline{background:transparent;border-color:#334155;color:#0f172a}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid #e2e8f0;border-radius:999px;background:#fff;color:#0f172a;font-size:12px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .grid{display:grid;gap:20px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:960px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
+
+    /* ===== Header ===== */
+    .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(10px);background:rgba(255,255,255,.8);border-bottom:1px solid #e5e7eb}
+    .nav{display:flex;align-items:center;gap:26px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo{width:40px;height:40px;border-radius:12px;object-fit:contain;background:#111}
+
+    /* ===== Hero ===== */
+    .hero{background:radial-gradient(1200px 600px at 20% -10%, rgba(0,212,255,.15), transparent),
+                      radial-gradient(900px 600px at 110% 10%, rgba(43,108,246,.18), transparent),
+                      linear-gradient(180deg, #0b1220 0%, #0b1220 40%, #0f172a 100%);
+          color:#e2e8f0}
+    .hero .container{padding:80px 20px}
+    .hero h1{margin:0 0 10px;font-size:44px;line-height:1.1;color:#fff}
+    .hero p{margin:0 0 22px;color:#cbd5e1}
+    .stat{padding:16px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06)}
+    .stat .k{font-weight:800;font-size:22px;color:#fff}
+    .stat .v{font-size:12px;color:#cbd5e1}
+    .hero-panel{padding:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px}
+
+    /* ===== Sections ===== */
+    section{padding:70px 0}
+    h2{font-size:32px;line-height:1.2;margin:0 0 10px;color:var(--text)}
+    .lead{color:var(--muted);margin:0 0 26px}
+    .service{padding:18px}
+    .service .icon{font-size:20px}
+    .list{padding-left:18px}
+
+    /* ===== Timeline ===== */
+    .timeline{display:grid;gap:12px}
+    .timeline .step{padding:16px;border-left:3px solid var(--brand);background:#fff;border-radius:12px}
+
+    /* ===== Footer ===== */
+    footer{background:#0b1220;color:#cbd5e1;padding:40px 0;margin-top:20px}
+    footer .small{color:#94a3b8}
+
+    /* ===== Mobile nav ===== */
+    .hamburger{display:none}
+    @media (max-width:900px){
+      .nav{display:none}
+      .hamburger{display:inline-flex;align-items:center;gap:8px;border:1px solid #cbd5e1;border-radius:10px;padding:8px 12px;background:#fff}
+      #menu:checked + .drawer{display:block}
+      .drawer{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid #e5e7eb}
+      .drawer a{display:block;padding:14px 20px;border-top:1px solid #f1f5f9}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="Platinum Global Logistics Logo 2 (White).png" alt="Platinum Global Logistics Logo">
-      <h1>Platinum Global Logistics</h1>
+  <!-- ===== Header ===== -->
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;height:64px">
+      <a class="brand" href="#">
+        <img class="logo" src="logo.png" alt="Platinum Global Logistics logo" onerror="this.style.background='#111'"/>
+        <span>Platinum Global Logistics</span>
+      </a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#industries">Industries</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#technology">Technology</a>
+        <a href="#contact" class="btn" style="padding:8px 14px">Get a quote</a>
+      </nav>
+      <label class="hamburger" for="menu">☰ Menu</label>
+      <input id="menu" type="checkbox" hidden>
+      <div class="drawer">
+        <a href="#services" onclick="menu.checked=false">Services</a>
+        <a href="#industries" onclick="menu.checked=false">Industries</a>
+        <a href="#why-us" onclick="menu.checked=false">Why Us</a>
+        <a href="#technology" onclick="menu.checked=false">Technology</a>
+        <a href="#contact" onclick="menu.checked=false">Contact</a>
+      </div>
     </div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#technology">Technology</a>
-      <a href="#contact">Contact</a>
-    </nav>
   </header>
 
-  <section id="hero">
-    <h2>Logistics that scale with your brand</h2>
-    <p>Platinum Global Logistics delivers fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.</p>
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center">
+        <div>
+          <div class="chip" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2);color:#e2e8f0">Trusted EU/UK/US fulfilment</div>
+          <h1>Logistics that scale with your brand</h1>
+          <p>Fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 26px">
+            <a class="btn" href="#contact">Start a project</a>
+            <a class="btn outline" href="#services">Our services</a>
+          </div>
+          <div class="grid grid-4">
+            <div class="stat"><div class="k">50+</div><div class="v">Carrier lanes</div></div>
+            <div class="stat"><div class="k">99.8%</div><div class="v">Pick accuracy</div></div>
+            <div class="stat"><div class="k">72h</div><div class="v">US delivery avg</div></div>
+            <div class="stat"><div class="k">8pm</div><div class="v">Latest cut‑off</div></div>
+          </div>
+        </div>
+        <div>
+          <div class="hero-panel">
+            <div class="grid grid-3">
+              <div class="stat"><div class="v">Orders Today</div><div class="k">1,860</div></div>
+              <div class="stat"><div class="v">On‑Time</div><div class="k">99.1%</div></div>
+              <div class="stat"><div class="v">Exceptions</div><div class="k">0.4%</div></div>
+            </div>
+            <div class="card" style="margin-top:14px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)">
+              <div style="color:#cbd5e1;font-size:13px;margin-bottom:6px">Lane Performance (7‑day)</div>
+              <div style="height:90px;border-radius:14px;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.06))"></div>
+            </div>
+            <div class="grid grid-3" style="margin-top:14px">
+              <div class="stat"><div class="v">US</div><div class="k">Avg 3.0 days</div></div>
+              <div class="stat"><div class="v">UK</div><div class="k">Avg 1.8 days</div></div>
+              <div class="stat"><div class="v">EU</div><div class="k">Avg 2.1 days</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- ===== Services ===== -->
   <section id="services">
-    <h2>Our Services</h2>
-    <div class="card"><strong>📦 E‑commerce Fulfilment</strong><br>Pick, pack, and ship with SLAs you can sell. Same‑day cut‑off, late carrier pick‑ups, live inventory.</div>
-    <div class="card"><strong>🏬 3PL & Warehousing</strong><br>Ambient storage, pallet in/out, cycle counts, bonded options, and scalable space for peak seasons.</div>
-    <div class="card"><strong>🚚 Global Parcel Network</strong><br>Optimised lanes to the US, UK, and EU with tracked delivery, DDP options, and multi‑carrier routing.</div>
+    <div class="container">
+      <h2>Services</h2>
+      <p class="lead">Everything you need to pick, pack, ship, and delight customers worldwide.</p>
+      <div class="grid grid-3">
+        <div class="card service"><div class="icon">📦</div><h3>E‑commerce Fulfilment</h3><p>Same‑day cut‑off, late carrier pick‑ups, live inventory, kitting & bundling.</p></div>
+        <div class="card service"><div class="icon">🏬</div><h3>3PL & Warehousing</h3><p>Ambient storage, pallet in/out, cycle counts, bonded options, seasonal scale.</p></div>
+        <div class="card service"><div class="icon">🚚</div><h3>Global Parcel Network</h3><p>Optimised lanes to US/UK/EU with tracked delivery, DDP options, multi‑carrier routing.</p></div>
+        <div class="card service"><div class="icon">🌐</div><h3>Cross‑Border & Returns</h3><p>Paperless trade, HS classification support, consumer‑friendly drop‑off networks.</p></div>
+        <div class="card service"><div class="icon">📈</div><h3>Delivery Analytics</h3><p>On‑time rates, exceptions, and cost per order in one dashboard.</p></div>
+        <div class="card service"><div class="icon">🎧</div><h3>Customer Care</h3><p>WISMO, claims, and proactive comms—branded support that speaks logistics.</p></div>
+      </div>
+    </div>
   </section>
 
-  <section id="industries">
-    <h2>Industries We Serve</h2>
-    <ul>
-      <li>Beauty & Skincare</li>
-      <li>Health & Wellness</li>
-      <li>Consumer Electronics</li>
-      <li>Lifestyle & Apparel</li>
-    </ul>
+  <!-- ===== Industries ===== -->
+  <section id="industries" style="background:#f1f5f9">
+    <div class="container">
+      <h2>Industries we serve</h2>
+      <div class="grid grid-4">
+        <div class="card" style="padding:16px"><h3>Beauty & Skincare</h3><ul class="list"><li>Batch & lot tracking</li><li>Gift messaging & kits</li><li>Leak‑safe packaging</li></ul></div>
+        <div class="card" style="padding:16px"><h3>Health & Wellness</h3><ul class="list"><li>Regulatory labelling</li><li>Temperature‑aware SLAs</li><li>Subscriptions</li></ul></div>
+        <div class="card" style="padding:16px"><h3>Consumer Electronics</h3><ul class="list"><li>Serial capture</li><li>Anti‑tamper packaging</li><li>Advanced returns (RMA)</li></ul></div>
+        <div class="card" style="padding:16px"><h3>Lifestyle & Apparel</h3><ul class="list"><li>Variants & sizing</li><li>Pre‑orders & drops</li><li>Green returns options</li></ul></div>
+      </div>
+    </div>
   </section>
 
+  <!-- ===== Why Us ===== -->
   <section id="why-us">
-    <h2>Built for Speed, Designed for Trust</h2>
-    <ul>
-      <li>Late pick‑ups for international dispatch</li>
-      <li>Proactive exception handling & scorecards</li>
-      <li>SLA‑backed fulfilment with money‑back guarantees</li>
-      <li>Scalable space and labour for peak seasons</li>
-    </ul>
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center">
+        <div>
+          <h2>Built for speed, designed for trust</h2>
+          <p class="lead">We combine process discipline with modern tooling to deliver consistently fast shipping and transparent reporting.</p>
+          <ul class="list">
+            <li>Late pick‑ups for international dispatch</li>
+            <li>Proactive exception handling & scorecards</li>
+            <li>SLA‑backed fulfilment with money‑back guarantees</li>
+            <li>Scalable space and labour for peak seasons</li>
+          </ul>
+          <div style="margin-top:16px"><a href="#contact" class="btn">Request a capabilities deck</a></div>
+        </div>
+        <div>
+          <div class="timeline">
+            <div class="step"><strong>Week 1:</strong> Data & process discovery, SLA design</div>
+            <div class="step"><strong>Week 2:</strong> Systems integration, test orders</div>
+            <div class="step"><strong>Week 3:</strong> Training, go‑live ramp, scorecard baseline</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="technology">
-    <h2>Technology That Keeps You in Control</h2>
-    <p>API‑first WMS/OMS, web‑based analytics for delivery performance, and automated exception handling.</p>
-    <p><strong>Partners:</strong> FedEx, UPS, DPD, DHL, GLS, An Post</p>
+  <!-- ===== Technology ===== -->
+  <section id="technology" style="background:#f1f5f9">
+    <div class="container">
+      <h2>Technology that keeps you in control</h2>
+      <p class="lead">API‑first WMS/OMS, delivery analytics, and automated exception handling.</p>
+      <div class="grid grid-2">
+        <ul class="card" style="padding:18px">
+          <li>📊 Delivery milestone tracking across UPS, DPD, DHL, GLS & more</li>
+          <li>🌍 Paperless trade & HS classification support</li>
+          <li>📦 SKU‑level visibility, kits & bundles, lot/expiry</li>
+        </ul>
+        <div class="card" style="padding:18px">
+          <div class="lead" style="margin-bottom:10px">Sample dashboard</div>
+          <div style="height:220px;border-radius:14px;background:linear-gradient(135deg,#e2e8f0,#f8fafc)"></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;font-size:12px">
+            <div class="chip">FedEx ↗</div>
+            <div class="chip">UPS ↗</div>
+            <div class="chip">DPD ↗</div>
+            <div class="chip">DHL ↗</div>
+            <div class="chip">GLS ↗</div>
+            <div class="chip">An Post ↗</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- ===== Contact ===== -->
   <section id="contact">
-    <h2>Contact Us</h2>
-    <form action="https://github.com/platinumlogistics/platinumlogistics.github.io/issues/new" method="GET" target="_blank">
-      <input type="hidden" name="title" value="New Enquiry from Website">
-      <label>Name:<br><input type="text" name="name" required></label><br>
-      <label>Email:<br><input type="email" name="email" required></label><br>
-      <label>Company:<br><input type="text" name="company"></label><br>
-      <label>Monthly Orders:<br><input type="text" name="monthly"></label><br>
-      <label>Project Details:<br><textarea name="details" rows="5"></textarea></label><br>
-      <button type="submit">Send Enquiry</button>
-    </form>
-    <p>✉️ info@platinumlogistics.ie<br>📞 0906641003<br>📍 Ireland & UK</p>
+    <div class="container">
+      <h2>Let’s ship something great</h2>
+      <p class="lead">Tell us about your volumes, destinations, and timeline. We’ll come back with a tailored plan and pricing.</p>
+      <form id="enquiry" class="card" style="padding:18px">
+        <div class="grid grid-2">
+          <div>
+            <label>Name<br><input required name="name" placeholder="Your name" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px"></label>
+          </div>
+          <div>
+            <label>Email<br><input required type="email" name="email" placeholder="Work email" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px"></label>
+          </div>
+          <div>
+            <label>Company<br><input name="company" placeholder="Company" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px"></label>
+          </div>
+          <div>
+            <label>Monthly orders (approx.)<br><input name="monthly" placeholder="e.g. 2,000" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px"></label>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <label>Project details<br>
+            <textarea name="details" rows="6" placeholder="Products, lanes, go‑live target…" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px"></textarea>
+          </label>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:12px;flex-wrap:wrap">
+          <div class="lead" style="margin:0;color:#475569;font-size:14px">
+            ✉️ info@platinumlogistics.ie &nbsp; • &nbsp; 📞 0906641003 &nbsp; • &nbsp; 📍 Ireland & UK
+          </div>
+          <button class="btn" type="submit">Send enquiry</button>
+        </div>
+      </form>
+    </div>
   </section>
 
+  <!-- ===== Footer ===== -->
   <footer>
-    © <span id="year"></span> Platinum Global Logistics. All rights reserved.
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <img class="logo" src="logo.png" alt="Platinum Global Logistics logo" style="width:32px;height:32px;border-radius:8px" onerror="this.style.background='#111'"/>
+        <strong>Platinum Global Logistics</strong>
+      </div>
+      <div class="small">© <span id="year"></span> Platinum Global Logistics. All rights reserved.</div>
+    </div>
   </footer>
+
   <script>
+    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // GitHub Issues integration (no Node): open prefilled issue with form content
+    document.getElementById('enquiry').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      const base = 'https://github.com/platinumlogistics/platinumlogistics.github.io/issues/new';
+      const title = `New enquiry from ${data.name || '(no name)'} — ${data.company || '(no company)'}`;
+      const body = [
+        '**New Enquiry**',
+        '',
+        `- Name: ${data.name || ''}`,
+        `- Email: ${data.email || ''}`,
+        `- Company: ${data.company || ''}`,
+        `- Monthly orders: ${data.monthly || ''}`,
+        '',
+        '**Project details**',
+        data.details || '',
+        '',
+        '_Submitted via Platinum Global Logistics website_'
+      ].join('\n');
+      const params = new URLSearchParams({ title, body });
+      window.open(`${base}?${params.toString()}`, '_blank');
+    });
   </script>
 </body>
 </html>
