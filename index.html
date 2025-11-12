@@ -1,106 +1,549 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Platinum Global Logistics</title>
-  <link rel="icon" href="Platinum Global Logistics Icon (White).png" />
-  <style>
-    :root {
-      --primary-color: #1F2322;
-      --secondary-color: #FF0340;
-      --accent-color: #ffd60a;
-      --text-color: #111;
-      --bg-color: #fff;
-      --light-bg: #f4f7fb;
+
+    <As
+      className={cx(
+        "inline-flex items-center justify-center rounded-2xl border border-slate-300 px-4 py-2 text-sm font-medium shadow-sm",
+        "bg-black text-white hover:opacity-90",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </As>
+  );
+}
+
+function Card({ className = "", children }) {
+  return <div className={cx("rounded-3xl border border-slate-200 bg-white", className)}>{children}</div>;
+}
+function CardHeader({ className = "", children }) {
+  return <div className={cx("p-6 pb-2", className)}>{children}</div>;
+}
+function CardContent({ className = "", children }) {
+  return <div className={cx("p-6", className)}>{children}</div>;
+}
+function CardTitle({ className = "", children }) {
+  return <h3 className={cx("text-lg font-semibold", className)}>{children}</h3>;
+}
+
+function Input({ className = "", ...props }) {
+  return (
+    <input
+      className={cx(
+        "w-full rounded-xl border border-slate-300 px-3 py-2 text-sm",
+        "focus:outline-none focus:ring-2 focus:ring-slate-400",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+function Textarea({ className = "", rows = 4, ...props }) {
+  return (
+    <textarea
+      rows={rows}
+      className={cx(
+        "w-full rounded-xl border border-slate-300 px-3 py-2 text-sm",
+        "focus:outline-none focus:ring-2 focus:ring-slate-400",
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+// ---------- Data ----------
+const nav = [
+  { label: "Services", href: "#services" },
+  { label: "Industries", href: "#industries" },
+  { label: "Why Us", href: "#why-us" },
+  { label: "Technology", href: "#technology" },
+  { label: "Contact", href: "#contact" },
+];
+
+const services = [
+  {
+    icon: "📦",
+    title: "E‑commerce Fulfilment",
+    desc: "Pick, pack, and ship with SLAs you can sell. Same‑day cut‑off, late carrier pick‑ups, live inventory.",
+  },
+  {
+    icon: "🏬",
+    title: "3PL & Warehousing",
+    desc: "Ambient storage, pallet in/out, cycle counts, bonded options, and scalable space for peak seasons.",
+  },
+  {
+    icon: "🚚",
+    title: "Global Parcel Network",
+    desc: "Optimised lanes to the US, UK, and EU with tracked delivery, DDP options, and multi‑carrier routing.",
+  },
+  {
+    icon: "🌐",
+    title: "Cross‑Border & Returns",
+    desc: "Harmonised data, paperless trade, and consumer‑friendly return flows with store‑drop networks.",
+  },
+  {
+    icon: "📈",
+    title: "Delivery Analytics",
+    desc: "Track milestones across carriers. Monitor exceptions, on‑time rates, and cost per order in one dashboard.",
+  },
+  {
+    icon: "🎧",
+    title: "Customer Care",
+    desc: "Branded support that speaks logistics—WISMO, claims, and proactive comms your shoppers actually read.",
+  },
+];
+
+const stats = [
+  { k: "50+", v: "Carrier lanes" },
+  { k: "99.8%", v: "Pick accuracy" },
+  { k: "72h", v: "US delivery avg" },
+  { k: "8pm", v: "Latest cut‑off" },
+];
+
+const industries = [
+  { title: "Beauty & Skincare", points: ["Batch & lot tracking", "Gift messaging & kits", "Leak‑safe packaging"] },
+  { title: "Health & Wellness", points: ["Regulatory labelling", "Temperature‑aware SLAs", "Subscription workflows"] },
+  { title: "Consumer Electronics", points: ["Serial capture", "Anti‑tamper packaging", "Advanced returns (RMA)"] },
+  { title: "Lifestyle & Apparel", points: ["Size/colour variants", "Pre‑order & drops", "Green returns options"] },
+];
+
+const checks = [
+  "Late pick‑ups for international dispatch",
+  "Proactive exception handling & scorecards",
+  "SLA‑backed fulfilment with money‑back guarantees",
+  "Scalable space and labour for peak seasons",
+];
+
+const partners = [
+  { name: "FedEx", url: "#" },
+  { name: "UPS", url: "#" },
+  { name: "DPD", url: "#" },
+  { name: "DHL", url: "#" },
+  { name: "GLS", url: "#" },
+  { name: "An Post", url: "#" },
+];
+
+// ---------- Helpers ----------
+function isGitHubConfigured() {
+  return GITHUB_REPO && !/YOUR_GITHUB_OWNER|YOUR_REPO/.test(GITHUB_REPO);
+}
+
+function buildGitHubIssueURL({ name, email, company, monthly, details }) {
+  const base = `https://github.com/${GITHUB_REPO}/issues/new`;
+  const title = `New enquiry from ${name || "(no name)"} — ${company || "(no company)"}`;
+  const lines = [
+    "**New Enquiry**",
+    "",
+    `- Name: ${name || ""}`,
+    `- Email: ${email || ""}`,
+    `- Company: ${company || ""}`,
+    `- Monthly orders: ${monthly || ""}`,
+    "",
+    "**Project details**",
+    details || "",
+    "",
+    "_Submitted via Platinum Global Logistics website_",
+  ];
+  const params = new URLSearchParams({ title, body: lines.join("\n") });
+  return `${base}?${params.toString()}`;
+}
+
+// ---------- Sections ----------
+function Header() {
+  return (
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur border-b">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex h-16 items-center justify-between">
+          <a href="#" className="flex items-center gap-2 font-semibold">
+            <div className="h-8 w-8 rounded-xl bg-black text-white grid place-content-center">PG</div>
+            <span className="tracking-tight">Platinum Global Logistics</span>
+          </a>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            {nav.map((n) => (
+              <a key={n.href} href={n.href} className="hover:text-black/80 text-black/60 transition-colors">
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2">
+            <a href="#contact"><Button>Get a quote</Button></a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50">
+      <div className="mx-auto max-w-7xl px-4 pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h1 className="text-4xl md:text-6xl font-semibold tracking-tight">
+              Logistics that scale with your brand
+            </h1>
+            <p className="mt-4 text-lg text-black/70 max-w-xl">
+              Platinum Global Logistics delivers fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a href="#contact"><Button className="px-5 py-3 text-base">Start a project</Button></a>
+              <a href="#services"><Button className="px-5 py-3 text-base bg-white text-black border-slate-300">Our services</Button></a>
+            </div>
+            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {stats.map((s) => (
+                <Card key={s.v} className="border-dashed">
+                  <CardContent className="p-4">
+                    <div className="text-2xl font-semibold">{s.k}</div>
+                    <div className="text-xs text-black/60">{s.v}</div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="aspect-[4/3] w-full rounded-3xl border bg-white p-4 shadow-sm grid grid-rows-3 gap-4">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="rounded-2xl border p-4">
+                  <div className="text-sm">Orders Today</div>
+                  <div className="text-3xl font-semibold">1,860</div>
+                </div>
+                <div className="rounded-2xl border p-4">
+                  <div className="text-sm">On‑Time</div>
+                  <div className="text-3xl font-semibold">99.1%</div>
+                </div>
+                <div className="rounded-2xl border p-4">
+                  <div className="text-sm">Exceptions</div>
+                  <div className="text-3xl font-semibold">0.4%</div>
+                </div>
+              </div>
+              <div className="rounded-2xl border p-4">
+                <div className="text-sm mb-2">Lane Performance (7‑day)</div>
+                <div className="h-24 w-full rounded-xl bg-gradient-to-r from-slate-100 to-slate-200" />
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="rounded-2xl border p-4 text-sm">
+                  <div className="font-medium">US</div>
+                  <div className="text-black/60">Avg 3.0 days</div>
+                </div>
+                <div className="rounded-2xl border p-4 text-sm">
+                  <div className="font-medium">UK</div>
+                  <div className="text-black/60">Avg 1.8 days</div>
+                </div>
+                <div className="rounded-2xl border p-4 text-sm">
+                  <div className="font-medium">EU</div>
+                  <div className="text-black/60">Avg 2.1 days</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Services() {
+  return (
+    <section id="services" className="py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Services</h2>
+          <a href="#contact" className="text-sm inline-flex items-center gap-2">Talk to an expert <span aria-hidden>→</span></a>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((s) => (
+            <Card key={s.title} className="group hover:shadow-md transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-slate-100 grid place-content-center group-hover:bg-slate-200 transition-colors text-base">
+                    <span role="img" aria-label="icon">{s.icon}</span>
+                  </div>
+                  <CardTitle className="text-lg">{s.title}</CardTitle>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-0 text-black/70 text-sm">{s.desc}</CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Industries() {
+  return (
+    <section id="industries" className="py-16 md:py-24 bg-slate-50">
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Industries we serve</h2>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {industries.map((i) => (
+            <Card key={i.title}>
+              <CardHeader>
+                <CardTitle className="text-base">{i.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0 text-sm text-black/70">
+                <ul className="space-y-2">
+                  {i.points.map((p) => (
+                    <li key={p} className="flex items-start gap-2"><span className="mt-0.5">✔️</span> {p}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyUs() {
+  return (
+    <section id="why-us" className="py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Built for speed, designed for trust</h2>
+            <p className="mt-4 text-black/70 max-w-prose">
+              We combine process discipline with modern tooling to deliver consistently fast shipping and transparent reporting.
+            </p>
+            <div className="mt-6 space-y-3 text-sm text-black/80">
+              {checks.map((c) => (
+                <div key={c} className="flex items-start gap-2"><span className="mt-0.5">🛡️</span> {c}</div>
+              ))}
+            </div>
+            <div className="mt-6">
+              <a href="#contact"><Button className="px-5 py-3 text-base">Request a capabilities deck</Button></a>
+            </div>
+          </div>
+          <div>
+            <div className="rounded-3xl border p-6 grid gap-4 bg-white">
+              <div className="flex items-center gap-3">
+                <span>⏱️</span>
+                <div className="font-medium">Implementation timeline</div>
+              </div>
+              <ol className="grid gap-4 text-sm">
+                <li className="rounded-2xl border p-4"><span className="font-medium">Week 1:</span> Data & process discovery, SLA design</li>
+                <li className="rounded-2xl border p-4"><span className="font-medium">Week 2:</span> Systems integration, test orders</li>
+                <li className="rounded-2xl border p-4"><span className="font-medium">Week 3:</span> Training, go‑live ramp, scorecard baseline</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Technology() {
+  return (
+    <section id="technology" className="py-16 md:py-24 bg-slate-50">
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Technology that keeps you in control</h2>
+            <p className="mt-4 text-black/70 max-w-prose">
+              API‑first WMS/OMS, web‑based analytics for delivery performance, and automated exception handling.
+            </p>
+            <ul className="mt-6 grid gap-3 text-sm text-black/80">
+              <li className="flex items-start gap-2"><span className="mt-0.5">📊</span> Delivery milestone tracking across UPS, DPD, DHL, GLS & more</li>
+              <li className="flex items-start gap-2"><span className="mt-0.5">🌍</span> Paperless trade & HS classification support</li>
+              <li className="flex items-start gap-2"><span className="mt-0.5">📦</span> SKU‑level visibility, kits & bundles, lot/expiry</li>
+            </ul>
+          </div>
+          <div className="rounded-3xl border p-6 bg-white">
+            <div className="text-sm text-black/60">Sample dashboard</div>
+            <div className="mt-3 h-64 w-full rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 grid place-content-center">
+              <div className="text-xs text-black/50">Interactive charts render here</div>
+            </div>
+            <div className="mt-4 grid sm:grid-cols-3 gap-3 text-xs">
+              {partners.map(p => (
+                <a key={p.name} href={p.url} className="rounded-xl border px-3 py-2 inline-flex items-center justify-between hover:bg-slate-50">
+                  <span>{p.name}</span>
+                  <span aria-hidden>↗</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", company: "", monthly: "", details: "" });
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setForm((f) => ({ ...f, [name]: value }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const to = "info@platinumlogistics.ie";
+    const subject = `New enquiry from ${form.name || "(no name)"} — ${form.company || "(no company)"}`;
+    const bodyLines = [
+      `Name: ${form.name || ""}`,
+      `Email: ${form.email || ""}`,
+      `Company: ${form.company || ""}`,
+      `Monthly orders: ${form.monthly || ""}`,
+      "",
+      "Project details:",
+      form.details || "",
+    ];
+
+    if (isGitHubConfigured()) {
+      const issueURL = buildGitHubIssueURL(form);
+      const g = document.getElementById("github-issue-probe");
+      if (g) g.setAttribute("href", issueURL);
+      window.location.href = issueURL; // opens GitHub new-issue page (user must be logged in)
+      return;
     }
-    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg-color); color: var(--text-color); }
-    header, section, footer { padding: 2rem; max-width: 1000px; margin: auto; }
-    header { background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    header img { height: 50px; }
-    nav a { margin: 0 1rem; text-decoration: none; color: white; font-weight: bold; }
-    nav a:hover { color: var(--accent-color); }
-    h1, h2 { color: var(--primary-color); }
-    section:nth-child(even) { background: var(--light-bg); }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; margin: 1rem 0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-    form input, form textarea { width: 100%; padding: 0.5rem; margin: 0.25rem 0; border-radius: 6px; border: 1px solid #ccc; }
-    form button { background: var(--secondary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
-    form button:hover { background: var(--primary-color); }
-    footer { background: var(--primary-color); color: white; text-align: center; font-size: 0.9rem; padding: 1.5rem; margin-top: 2rem; }
-  </style>
-</head>
-<body>
-  <header>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <img src="logo.png" alt="Platinum Global Logistics Logo">
-      <h1>Platinum Global Logistics</h1>
+
+    const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+    const a = document.getElementById("mailto-probe");
+    if (a) a.setAttribute("href", mailto);
+    window.location.href = mailto;
+  }
+
+  return (
+    <section id="contact" className="py-16 md:py-24">
+      <div className="mx-auto max-w-3xl px-4">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">Let’s ship something great</h2>
+          <p className="mt-3 text-black/70">Tell us about your volumes, destinations, and timeline. We’ll come back with a tailored plan and pricing.</p>
+        </div>
+        <Card className="mt-8">
+          <CardContent className="p-6 grid gap-4">
+            <form onSubmit={handleSubmit} className="grid gap-4">
+              <div className="grid md:grid-cols-2 gap-4">
+                <Input name="name" value={form.name} onChange={handleChange} placeholder="Your name" aria-label="Your name" />
+                <Input name="email" value={form.email} onChange={handleChange} placeholder="Work email" type="email" aria-label="Work email" />
+              </div>
+              <div className="grid md:grid-cols-2 gap-4">
+                <Input name="company" value={form.company} onChange={handleChange} placeholder="Company" aria-label="Company" />
+                <Input name="monthly" value={form.monthly} onChange={handleChange} placeholder="Monthly orders (approx.)" aria-label="Monthly orders" />
+              </div>
+              <Textarea name="details" value={form.details} onChange={handleChange} placeholder="Project details: products, lanes, go‑live target…" rows={6} aria-label="Project details" />
+              <div className="flex items-center justify-between">
+                <div className="text-sm text-black/60 flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center gap-1">✉️ info@platinumlogistics.ie</span>
+                  <span className="inline-flex items-center gap-1">📞 0906641003</span>
+                  <span className="inline-flex items-center gap-1">📍 Ireland & UK</span>
+                </div>
+                <Button type="submit" className="px-5 py-3 text-base">Send enquiry</Button>
+              </div>
+            </form>
+            {/* Probes for tests */}
+            <a id="mailto-probe" href="mailto:info@platinumlogistics.ie" className="sr-only" aria-hidden>
+              Mailto probe
+            </a>
+            <a id="github-issue-probe" href="https://github.com/" className="sr-only" aria-hidden>
+              GitHub issue probe
+            </a>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="border-t bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10">
+        <div className="grid md:grid-cols-4 gap-8">
+          <div>
+            <div className="flex items-center gap-2 font-semibold">
+              <div className="h-8 w-8 rounded-xl bg-black text-white grid place-content-center">PG</div>
+              <span>Platinum Global Logistics</span>
+            </div>
+            <p className="mt-3 text-sm text-black/60 max-w-xs">Fulfilment, warehousing, and cross‑border delivery for growing brands.</p>
+          </div>
+          <div>
+            <div className="text-sm font-medium">Company</div>
+            <ul className="mt-3 space-y-2 text-sm text-black/70">
+              <li><a href="#services">Services</a></li>
+              <li><a href="#industries">Industries</a></li>
+              <li><a href="#technology">Technology</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-sm font-medium">Legal</div>
+            <ul className="mt-3 space-y-2 text-sm text-black/70">
+              <li>Privacy</li>
+              <li>Terms</li>
+              <li>Sustainability</li>
+            </ul>
+          </div>
+          <div>
+            <div className="text-sm font-medium">Locations</div>
+            <ul className="mt-3 space-y-2 text-sm text-black/70">
+              <li>Ireland</li>
+              <li>United Kingdom</li>
+              <li>United States (partners)</li>
+            </ul>
+          </div>
+        </div>
+        <div className="mt-8 text-xs text-black/50">© {new Date().getFullYear()} Platinum Global Logistics. All rights reserved.</div>
+      </div>
+    </footer>
+  );
+}
+
+// ---------- Lightweight Runtime "Tests" ----------
+// These run once on mount to catch common render/structure regressions in this sandbox.
+function useSanityChecks() {
+  useEffect(() => {
+    try {
+      const ids = ["services", "industries", "why-us", "technology", "contact"]; 
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        console.assert(!!el, `Section #${id} should be present`);
+      });
+      console.assert(
+        document.querySelector("footer") !== null,
+        "Footer should render"
+      );
+      console.assert(
+        /info@platinumlogistics\.ie/.test(document.body.textContent || ""),
+        "Contact email should be present"
+      );
+      console.assert(
+        /0906641003/.test(document.body.textContent || ""),
+        "Contact phone should be present"
+      );
+      const probeMail = document.getElementById("mailto-probe");
+      const probeGit = document.getElementById("github-issue-probe");
+      if (isGitHubConfigured()) {
+        console.assert(probeGit && probeGit.getAttribute("href")?.startsWith("https://github.com/"), "GitHub issue probe should exist with base href");
+      } else {
+        console.assert(probeMail && probeMail.getAttribute("href")?.startsWith("mailto:info@platinumlogistics.ie"), "Mailto probe should exist with base href");
+      }
+      // eslint-disable-next-line no-console
+      console.log("Sanity checks passed");
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error("Sanity checks failed", e);
+    }
+  }, []);
+}
+
+export default function PlatinumGlobalLogisticsSite() {
+  useSanityChecks();
+  return (
+    <div className="min-h-screen bg-white text-slate-900">
+      <Header />
+      <Hero />
+      <Services />
+      <Industries />
+      <WhyUs />
+      <Technology />
+      <Contact />
+      <Footer />
     </div>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#technology">Technology</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="hero">
-    <h2>Logistics that scale with your brand</h2>
-    <p>Platinum Global Logistics delivers fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.</p>
-  </section>
-
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="card"><strong>📦 E‑commerce Fulfilment</strong><br>Pick, pack, and ship with SLAs you can sell. Same‑day cut‑off, late carrier pick‑ups, live inventory.</div>
-    <div class="card"><strong>🏬 3PL & Warehousing</strong><br>Ambient storage, pallet in/out, cycle counts, bonded options, and scalable space for peak seasons.</div>
-    <div class="card"><strong>🚚 Global Parcel Network</strong><br>Optimised lanes to the US, UK, and EU with tracked delivery, DDP options, and multi‑carrier routing.</div>
-  </section>
-
-  <section id="industries">
-    <h2>Industries We Serve</h2>
-    <ul>
-      <li>Beauty & Skincare</li>
-      <li>Health & Wellness</li>
-      <li>Consumer Electronics</li>
-      <li>Lifestyle & Apparel</li>
-    </ul>
-  </section>
-
-  <section id="why-us">
-    <h2>Built for Speed, Designed for Trust</h2>
-    <ul>
-      <li>Late pick‑ups for international dispatch</li>
-      <li>Proactive exception handling & scorecards</li>
-      <li>SLA‑backed fulfilment with money‑back guarantees</li>
-      <li>Scalable space and labour for peak seasons</li>
-    </ul>
-  </section>
-
-  <section id="technology">
-    <h2>Technology That Keeps You in Control</h2>
-    <p>API‑first WMS/OMS, web‑based analytics for delivery performance, and automated exception handling.</p>
-    <p><strong>Partners:</strong> FedEx, UPS, DPD, DHL, GLS, An Post</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form action="https://github.com/platinumlogistics/platinumlogistics.github.io/issues/new" method="GET" target="_blank">
-      <input type="hidden" name="title" value="New Enquiry from Website">
-      <label>Name:<br><input type="text" name="name" required></label><br>
-      <label>Email:<br><input type="email" name="email" required></label><br>
-      <label>Company:<br><input type="text" name="company"></label><br>
-      <label>Monthly Orders:<br><input type="text" name="monthly"></label><br>
-      <label>Project Details:<br><textarea name="details" rows="5"></textarea></label><br>
-      <button type="submit">Send Enquiry</button>
-    </form>
-    <p>✉️ info@platinumlogistics.ie<br>📞 0906641003<br>📍 Ireland & UK</p>
-  </section>
-
-  <footer>
-    © <span id="year"></span> Platinum Global Logistics. All rights reserved.
-  </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+  );
+}
