@@ -4,21 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Platinum Global Logistics</title>
+  <link rel="icon" href="logo.png" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #fff; color: #111; }
-    header, section, footer { padding: 2rem; max-width: 900px; margin: auto; }
-    header { background: #f8f8f8; border-bottom: 1px solid #ddd; }
-    nav a { margin: 0 1rem; text-decoration: none; color: #333; }
-    h1, h2 { color: #000; }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; margin: 1rem 0; }
+    :root {
+      --primary-color: #002b5b;
+      --secondary-color: #0077b6;
+      --accent-color: #ffd60a;
+      --text-color: #111;
+      --bg-color: #fff;
+      --light-bg: #f4f7fb;
+    }
+    body { font-family: Arial, sans-serif; margin: 0; background: var(--bg-color); color: var(--text-color); }
+    header, section, footer { padding: 2rem; max-width: 1000px; margin: auto; }
+    header { background: var(--primary-color); color: white; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    header img { height: 50px; }
+    nav a { margin: 0 1rem; text-decoration: none; color: white; font-weight: bold; }
+    nav a:hover { color: var(--accent-color); }
+    h1, h2 { color: var(--primary-color); }
+    section:nth-child(even) { background: var(--light-bg); }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; margin: 1rem 0; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     form input, form textarea { width: 100%; padding: 0.5rem; margin: 0.25rem 0; border-radius: 6px; border: 1px solid #ccc; }
-    form button { background: black; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
-    footer { background: #f8f8f8; border-top: 1px solid #ddd; text-align: center; font-size: 0.9rem; color: #666; }
+    form button { background: var(--secondary-color); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 1rem; }
+    form button:hover { background: var(--primary-color); }
+    footer { background: var(--primary-color); color: white; text-align: center; font-size: 0.9rem; padding: 1.5rem; margin-top: 2rem; }
   </style>
 </head>
 <body>
   <header>
-    <h1>Platinum Global Logistics</h1>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="logo.png" alt="Platinum Global Logistics Logo">
+      <h1>Platinum Global Logistics</h1>
+    </div>
     <nav>
       <a href="#services">Services</a>
       <a href="#industries">Industries</a>
@@ -34,14 +50,14 @@
   </section>
 
   <section id="services">
-    <h2>Services</h2>
+    <h2>Our Services</h2>
     <div class="card"><strong>📦 E‑commerce Fulfilment</strong><br>Pick, pack, and ship with SLAs you can sell. Same‑day cut‑off, late carrier pick‑ups, live inventory.</div>
     <div class="card"><strong>🏬 3PL & Warehousing</strong><br>Ambient storage, pallet in/out, cycle counts, bonded options, and scalable space for peak seasons.</div>
     <div class="card"><strong>🚚 Global Parcel Network</strong><br>Optimised lanes to the US, UK, and EU with tracked delivery, DDP options, and multi‑carrier routing.</div>
   </section>
 
   <section id="industries">
-    <h2>Industries we serve</h2>
+    <h2>Industries We Serve</h2>
     <ul>
       <li>Beauty & Skincare</li>
       <li>Health & Wellness</li>
@@ -51,7 +67,7 @@
   </section>
 
   <section id="why-us">
-    <h2>Built for speed, designed for trust</h2>
+    <h2>Built for Speed, Designed for Trust</h2>
     <ul>
       <li>Late pick‑ups for international dispatch</li>
       <li>Proactive exception handling & scorecards</li>
@@ -61,9 +77,9 @@
   </section>
 
   <section id="technology">
-    <h2>Technology that keeps you in control</h2>
+    <h2>Technology That Keeps You in Control</h2>
     <p>API‑first WMS/OMS, web‑based analytics for delivery performance, and automated exception handling.</p>
-    <p>Partners: FedEx, UPS, DPD, DHL, GLS, An Post</p>
+    <p><strong>Partners:</strong> FedEx, UPS, DPD, DHL, GLS, An Post</p>
   </section>
 
   <section id="contact">
