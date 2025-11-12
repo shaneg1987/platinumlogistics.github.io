@@ -1,331 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Platinum Global Logistics | Ballaghaderreen Co Roscommon</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- AOS CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platinum Global Logistics</title>
   <style>
-    :root {
-      --primary-color: #0af5ff;
-      --dark-bg: #121212;
-      --nav-bg: #1c1c1c;
-      --text-color: #e0e0e0;
-      --accent-color: #00d8ff;
-      --shadow-color: rgba(0, 216, 255, 0.2);
-    }
-
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-color);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      background-color: var(--nav-bg);
-      box-shadow: 0 2px 8px var(--shadow-color);
-      padding: 1rem 2rem;
-      text-align: center;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
-
-    header h1 {
-      margin: 0;
-      font-weight: 600;
-      font-size: 1.8rem;
-      letter-spacing: 1px;
-      color: var(--primary-color);
-    }
-
-    header p {
-      margin: 0.25rem 0 0;
-      font-weight: 400;
-      font-size: 1rem;
-      color: #ccc;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: var(--nav-bg);
-      box-shadow: 0 1px 6px var(--shadow-color);
-      position: sticky;
-      top: 68px;
-      z-index: 999;
-    }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      padding: 1rem 1.5rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    nav a:hover,
-    nav a:focus {
-      background-color: var(--primary-color);
-      color: var(--dark-bg);
-      border-radius: 4px;
-    }
-
-    .hero {
-      position: relative;
-      background: url('https://source.unsplash.com/1600x600/?logistics,warehouse') no-repeat center center/cover;
-      height: 60vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding: 0 1rem;
-      margin-bottom: 3rem;
-      border-radius: 0 0 60% 60% / 15%;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      z-index: 0;
-    }
-
-    .hero h2 {
-      position: relative;
-      font-size: 3rem;
-      margin: 0;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      z-index: 1;
-    }
-
-    .hero p {
-      position: relative;
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      font-weight: 400;
-      z-index: 1;
-      max-width: 700px;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 0 auto 4rem;
-      padding: 0 1rem;
-    }
-
-    section {
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      box-shadow: 0 8px 20px var(--shadow-color);
-      padding: 2.5rem 2rem;
-      margin-bottom: 3rem;
-      color: var(--text-color);
-      line-height: 1.5;
-      transition: transform 0.3s ease;
-    }
-
-    section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px var(--primary-color);
-    }
-
-    section h2 {
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary-color);
-      letter-spacing: 0.05em;
-    }
-
-    section p {
-      font-size: 1.05rem;
-      color: #bbb;
-    }
-
-    /* Contact Section */
-    #contact p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #ccc;
-      line-height: 1.4;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      max-width: 500px;
-      margin-top: 1rem;
-    }
-
-    input,
-    textarea {
-      background-color: #2a2a2a;
-      border: 1.5px solid #444;
-      border-radius: 6px;
-      padding: 0.75rem 1rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-      color: #eee;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 8px var(--primary-color);
-      background-color: #1e1e1e;
-    }
-
-    button {
-      background: var(--primary-color);
-      border: none;
-      padding: 0.85rem 1.25rem;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--dark-bg);
-      cursor: pointer;
-      border-radius: 6px;
-      transition: background-color 0.3s ease;
-      align-self: flex-start;
-      box-shadow: 0 6px 12px var(--shadow-color);
-    }
-
-    button:hover,
-    button:focus {
-      background: var(--accent-color);
-      box-shadow: 0 8px 16px var(--accent-color);
-    }
-
-    footer {
-      background-color: var(--nav-bg);
-      text-align: center;
-      padding: 1.5rem 1rem;
-      color: #888;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav {
-        flex-wrap: wrap;
-      }
-      nav a {
-        flex: 1 1 50%;
-        text-align: center;
-      }
-
-      .hero h2 {
-        font-size: 2.2rem;
-      }
-
-      .hero p {
-        font-size: 1rem;
-      }
-
-      section {
-        padding: 2rem 1rem;
-      }
-    }
+    body { font-family: Arial, sans-serif; margin: 0; background: #fff; color: #111; }
+    header, section, footer { padding: 2rem; max-width: 900px; margin: auto; }
+    header { background: #f8f8f8; border-bottom: 1px solid #ddd; }
+    nav a { margin: 0 1rem; text-decoration: none; color: #333; }
+    h1, h2 { color: #000; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 1rem; margin: 1rem 0; }
+    form input, form textarea { width: 100%; padding: 0.5rem; margin: 0.25rem 0; border-radius: 6px; border: 1px solid #ccc; }
+    form button { background: black; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; }
+    footer { background: #f8f8f8; border-top: 1px solid #ddd; text-align: center; font-size: 0.9rem; color: #666; }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Platinum Global Logistics</h1>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#technology">Technology</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Platinum Global Logistics</h1>
-  <p>Ballaghaderreen, Co Roscommon</p>
-</header>
-
-<nav>
-  <a href="#fulfilment">E-Commerce Fulfilment</a>
-  <a href="#warehousing">Specialised Warehousing</a>
-  <a href="#logistics">Worldwide Logistics</a>
-  <a href="#3pl">3PL Services</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<div class="hero" data-aos="fade-up" data-aos-duration="1500">
-  <h2>Global Reach. Local Expertise.</h2>
-  <p>Delivering world-class logistics solutions from the West of Ireland</p>
-</div>
-
-<main>
-  <section id="fulfilment" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
-    <h2>E-Commerce Fulfilment</h2>
-    <p>From order picking and packing to real-time inventory management, our streamlined e-commerce fulfilment solutions support your business growth and customer satisfaction worldwide.</p>
+  <section id="hero">
+    <h2>Logistics that scale with your brand</h2>
+    <p>Platinum Global Logistics delivers fast, reliable fulfilment across the US, UK, and EU—powered by modern operations, flexible warehousing, and multi‑carrier shipping.</p>
   </section>
 
-  <section id="warehousing" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-    <h2>Specialised Outsourced Warehousing</h2>
-    <p>Our West of Ireland-based facility provides secure, scalable storage tailored for pharmaceuticals, cosmetics, and high-value consumer goods.</p>
+  <section id="services">
+    <h2>Services</h2>
+    <div class="card"><strong>📦 E‑commerce Fulfilment</strong><br>Pick, pack, and ship with SLAs you can sell. Same‑day cut‑off, late carrier pick‑ups, live inventory.</div>
+    <div class="card"><strong>🏬 3PL & Warehousing</strong><br>Ambient storage, pallet in/out, cycle counts, bonded options, and scalable space for peak seasons.</div>
+    <div class="card"><strong>🚚 Global Parcel Network</strong><br>Optimised lanes to the US, UK, and EU with tracked delivery, DDP options, and multi‑carrier routing.</div>
   </section>
 
-  <section id="logistics" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
-    <h2>Worldwide Logistics (Air & Sea Freight)</h2>
-    <p>Leverage our global network and freight partnerships to move your goods efficiently by air or sea. We handle customs, compliance, and last-mile delivery.</p>
+  <section id="industries">
+    <h2>Industries we serve</h2>
+    <ul>
+      <li>Beauty & Skincare</li>
+      <li>Health & Wellness</li>
+      <li>Consumer Electronics</li>
+      <li>Lifestyle & Apparel</li>
+    </ul>
   </section>
 
-  <section id="3pl" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="400">
-    <h2>Third-Party Logistics (3PL)</h2>
-    <p>We operate as a seamless extension of your brand, offering complete 3PL services including fulfilment, returns management, courier integrations, and value-added services such as outsourced customer service.</p>
+  <section id="why-us">
+    <h2>Built for speed, designed for trust</h2>
+    <ul>
+      <li>Late pick‑ups for international dispatch</li>
+      <li>Proactive exception handling & scorecards</li>
+      <li>SLA‑backed fulfilment with money‑back guarantees</li>
+      <li>Scalable space and labour for peak seasons</li>
+    </ul>
   </section>
 
-  <section id="contact" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500">
+  <section id="technology">
+    <h2>Technology that keeps you in control</h2>
+    <p>API‑first WMS/OMS, web‑based analytics for delivery performance, and automated exception handling.</p>
+    <p>Partners: FedEx, UPS, DPD, DHL, GLS, An Post</p>
+  </section>
+
+  <section id="contact">
     <h2>Contact Us</h2>
-    <p><strong>Platinum Global Logistics</strong><br>
-      Unit 18 Ballaghaderreen Business Park, Ballaghaderreen, Co Roscommon F45 PY93<br>
-      Email: info@platinumlogistics.ie<br>
-    </p>
-    <form action="#" method="POST" aria-label="Contact form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit" aria-label="Send message">Send Message</button>
+    <form action="https://github.com/platinumlogistics/platinumlogistics.github.io/issues/new" method="GET" target="_blank">
+      <input type="hidden" name="title" value="New Enquiry from Website">
+      <label>Name:<br><input type="text" name="name" required></label><br>
+      <label>Email:<br><input type="email" name="email" required></label><br>
+      <label>Company:<br><input type="text" name="company"></label><br>
+      <label>Monthly Orders:<br><input type="text" name="monthly"></label><br>
+      <label>Project Details:<br><textarea name="details" rows="5"></textarea></label><br>
+      <button type="submit">Send Enquiry</button>
     </form>
+    <p>✉️ info@platinumlogistics.ie<br>📞 0906641003<br>📍 Ireland & UK</p>
   </section>
-</main>
 
-<footer>
-  &copy; 2025 Platinum Global Logistics. All rights reserved.
-</footer>
-
-<!-- AOS JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-  AOS.init({
-    once: true,
-    easing: 'ease-in-out',
-  });
-</script>
-
+  <footer>
+    © <span id="year"></span> Platinum Global Logistics. All rights reserved.
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
