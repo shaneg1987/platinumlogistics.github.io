@@ -300,6 +300,8 @@
             ✉️ info@platinumlogistics.ie &nbsp; • &nbsp; 📞 0906641003 &nbsp; • &nbsp; 📍 Ireland & UK
           </div>
           <button class="btn" type="submit">Send enquiry</button>
+          <a id="mailto-fallback" class="btn outline" href="#">Email us instead</a>
+          <small style="color:#64748b">Having trouble? This opens a GitHub Issue; if blocked or you’re not logged in, use the email button.</small>
         </div>
       </form>
     </div>
@@ -320,10 +322,7 @@
     // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // GitHub Issues integration (no Node): open prefilled issue with form content
-    document.getElementById('enquiry').addEventListener('submit', function(e){
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(this).entries());
+    function buildIssueURL(data){
       const base = 'https://github.com/platinumlogistics/platinumlogistics.github.io/issues/new';
       const title = `New enquiry from ${data.name || '(no name)'} — ${data.company || '(no company)'}`;
       const body = [
@@ -338,9 +337,47 @@
         data.details || '',
         '',
         '_Submitted via Platinum Global Logistics website_'
-      ].join('\n');
+      ].join('
+');
       const params = new URLSearchParams({ title, body });
-      window.open(`${base}?${params.toString()}`, '_blank');
+      return `${base}?${params.toString()}`;
+    }
+
+    function buildMailto(data){
+      const to = 'info@platinumlogistics.ie';
+      const subject = `New enquiry from ${data.name || '(no name)'} — ${data.company || '(no company)'}`;
+      const body = [
+        `Name: ${data.name || ''}`,
+        `Email: ${data.email || ''}`,
+        `Company: ${data.company || ''}`,
+        `Monthly orders: ${data.monthly || ''}`,
+        '',
+        'Project details:',
+        data.details || ''
+      ].join('
+');
+      return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // GitHub Issues integration with popup fallback
+    document.getElementById('enquiry').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(this).entries());
+      const url = buildIssueURL(data);
+      let w = null;
+      try { w = window.open(url, '_blank'); } catch(_) {}
+      if (!w) { // popup blocked
+        window.location.href = url;
+      }
+    });
+
+    // Mailto fallback link (explicit)
+    document.getElementById('mailto-fallback').addEventListener('click', function(e){
+      e.preventDefault();
+      const form = document.getElementById('enquiry');
+      const data = Object.fromEntries(new FormData(form).entries());
+      const mailto = buildMailto(data);
+      window.location.href = mailto;
     });
   </script>
 </body>
